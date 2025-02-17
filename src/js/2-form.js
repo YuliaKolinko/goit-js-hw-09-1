@@ -14,23 +14,29 @@ function populateForm() {
 
   if (savedData) {
     const parsedData = JSON.parse(savedData);
-    form.email.value.trim() = parsedData.email || '';
-    form.message.value.trim() = parsedData.message || '';
+    form.email.value = parsedData.email || '';
+    form.message.value = parsedData.message || '';
 
     // Оновлюємо formData відповідно до збережених даних
     formData.email = parsedData.email || '';
     formData.message = parsedData.message || '';
   }
 }
-populateForm(); 
+populateForm();
 
 // Очищення форми
 form.addEventListener('submit', event => {
-  event.preventDefault(); 
+  event.preventDefault();
+  if (
+    event.target.elements.email.value.trim() === '' ||
+    event.target.elements.message.value.trim() === ''
+  ) {
+    alert("'All form fields must be filled in'");
+    return;
+  }
+  console.log(formData);
 
-  console.log(formData); 
-
-  localStorage.removeItem('feedback-form-state'); 
+  localStorage.removeItem('feedback-form-state');
 
   formData.email = '';
   formData.message = '';
