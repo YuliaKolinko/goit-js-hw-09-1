@@ -87,7 +87,12 @@ const imagesArray = images.map(image => {
 
 galleryItems.append(...imagesArray);
 
-let gallery = new SimpleLightbox('.gallery a', {});
+let gallery = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: `alt`,
+  captionDelay: 250,
+  animationSpeed: 350,
+});
 gallery.on('show.simplelightbox', function () {});
 gallery.on('error.simplelightbox', function (e) {
   console.log(e);

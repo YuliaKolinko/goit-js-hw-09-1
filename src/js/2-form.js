@@ -14,23 +14,23 @@ function populateForm() {
 
   if (savedData) {
     const parsedData = JSON.parse(savedData);
-    form.email.value = parsedData.email || '';
-    form.message.value = parsedData.message || '';
+    form.email.value.trim() = parsedData.email || '';
+    form.message.value.trim() = parsedData.message || '';
 
     // Оновлюємо formData відповідно до збережених даних
     formData.email = parsedData.email || '';
     formData.message = parsedData.message || '';
   }
 }
-populateForm(); // Викликаємо при завантаженні сторінки
+populateForm(); 
 
 // Очищення форми
 form.addEventListener('submit', event => {
-  event.preventDefault(); // Забороняємо перезавантаження сторінки
+  event.preventDefault(); 
 
-  console.log(formData); // Виводимо у консоль
+  console.log(formData); 
 
-  localStorage.removeItem('feedback-form-state'); // Очищаємо localStorage
+  localStorage.removeItem('feedback-form-state'); 
 
   formData.email = '';
   formData.message = '';
